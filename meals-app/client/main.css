@@ -1,0 +1,53 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1b856;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 50px;
+  text-align: center;
+  height: 100vh;
+}
+body > #app {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+#app div {
+  background-color: #fff;
+  margin: 10px;
+  padding: 20px;
+  flex-grow: 1;
+  flex-basis: 40%;
+  height: 90%;
+}
+#app div ul {
+  list-style-type: none;
+}
+#app div ul .meal {
+  background-color: #7f9bab;
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#app div #submit {
+  background-color: #2a8279;
+  color: #fff;
+  padding: 8px 16px;
+  outline: none;
+  border-style: none;
+  cursor: pointer;
+  border-radius: 2px;
+  display: none;
+}
+#app div:disabled {
+  background-color: #ccc;
+}
+
+/*# sourceMappingURL=main.css.map */
