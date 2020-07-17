@@ -24,6 +24,7 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const body = req.body;
+  console.log(body)
   try {
     const createdMeal = await Meal.create({
       name: body.name,

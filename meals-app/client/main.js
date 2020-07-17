@@ -3,19 +3,19 @@
 window.onload = async () => {
 
   let meals = [];
+  const submit = document.querySelector("#submit");
 
   const getMeals = async () => {
-    const res = await fetch("https://meals-app.now.sh/api/meals");
+    const res = await fetch("http://localhost:3000/api/meals");
     const data = await res.json();
     return data.meals;
   };
 
   const setButtonState = () => {
-    const button = document.querySelector("#submit");
-    if (!meals) button.disabled = true;
+    if (!meals) submit.disabled = true;
     else {
-      if (meals.length !== 0) button.style.display = "inline-block";
-      button.disabled = false;
+      if (meals.length !== 0) submit.style.display = "inline-block";
+      submit.disabled = false;
     }
   };
   
@@ -24,12 +24,11 @@ window.onload = async () => {
     $el.innerHTML = 
       meals.map(
         meal => `
-          <li class="meal">
+          <li key="meal-${meal._id}" class="meal">
             <h3>${meal.name}</h3>
             <p>${meal.desc}</p>
           </li>`
         ).join("");
-
     setButtonState();
   };
 
