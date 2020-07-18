@@ -12,7 +12,8 @@ body {
   text-align: center;
   height: 100vh;
 }
-body > #app {
+
+#app {
   display: flex;
   flex-wrap: wrap;
   height: 100%;
@@ -26,18 +27,35 @@ body > #app {
   flex-basis: 40%;
   min-height: 90%;
 }
+
 #app div ul {
   list-style-type: none;
 }
+
 #app div ul .meal {
+  cursor: pointer;
+}
+
+#app div ul .meal,
+#app div ul .order {
   background-color: #7f9bab;
   margin: 20px 0;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  cursor: pointer;
+  user-select: none;
 }
-#app div #submit {
+
+#app div ul .meal:hover {
+  background-color: #999;
+}
+
+#app div ul .meal.selected {
+  background-color: #333;
+  color: #fff;
+}
+
+#app div .submit {
   background-color: #2a8279;
   color: #fff;
   padding: 8px 16px;
@@ -47,8 +65,14 @@ body > #app {
   border-radius: 2px;
   display: none;
 }
-#app div:disabled {
-  background-color: #ccc;
+
+#app div .submit:hover {
+  background-color: #42a89e;
+}
+
+#app div .submit:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
 }
 
 /*# sourceMappingURL=main.css.map */
