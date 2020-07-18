@@ -26,8 +26,8 @@ router.post("/", async (req, res) => {
   const body = req.body;
   try {
     const createdOrder = await Order.create({
-      name: body.name,
-      desc: body.desc
+      orderId: body.orderId,
+      userId: body.userId
     });
     res.status(201).send({
       status: "ok",
@@ -44,8 +44,8 @@ router.put("/:id", async (req, res) => {
   const body = req.body;
   try {
     await Order.findByIdAndUpdate(orderId, {
-      name: body.name,
-      desc: body.desc
+      orderId: body.orderId,
+      userId: body.userId
     }).exec();
     res.sendStatus(204);
   } catch (err) {
