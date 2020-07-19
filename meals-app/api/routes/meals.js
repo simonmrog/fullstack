@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const Meal = require("../models/meal");
+const MealSchema = require("../models/meal");
 
 router.get("/", async (req, res) => {
   try {
-    const meals = await Meal.find().exec();
+    const meals = await MealSchema.find().exec();
     res.status(200).send({ status: "ok", meals: meals });
   } catch (err) {
     res.status(400).send({ status:"error", message: `error: ${err.message}` });
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const mealId = req.params.id;
   try {
-    const meal = await Meal.findById(mealId).exec();
+    const meal = await MealSchema.findById(mealId).exec();
     res.status(200).send({ status: "ok", meal: meal });
   } catch (err) {
     res.status(500).send({ status:"error", message: `error: ${err.message}` });
@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
   const body = req.body;
   console.log(body)
   try {
-    const createdMeal = await Meal.create({
+    const createdMeal = await MealSchema.create({
       name: body.name,
       desc: body.desc
     });
@@ -44,7 +44,7 @@ router.put("/:id", async (req, res) => {
   const mealId = req.params.id;
   const body = req.body;
   try {
-    await Meal.findByIdAndUpdate(mealId, {
+    await MealSchema.findByIdAndUpdate(mealId, {
       name: body.name,
       desc: body.desc
     }).exec();
@@ -57,7 +57,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const mealId = req.params.id;
   try {
-    await Meal.findByIdAndDelete(mealId).exec();
+    await MealSchema.findByIdAndDelete(mealId).exec();
     res.sendStatus(204);
   } catch (err) {
     res.status(500).send({ status:"error", message: `error: ${err.message}` });

@@ -1,21 +1,21 @@
 const express = require("express");
 const router = express.Router();
 
-const Order = require("../models/order");
+const OrderSchema = require("../models/order");
 
 router.get("/", async (req, res) => {
   try {
-    const orders = await Order.find().exec();
+    const orders = await OrderSchema.find().exec();
     res.status(200).send({ status: "ok", orders: orders });
   } catch (err) {
-    res.status(400).send({ status:"error", message: `error: ${err.message}` });
+    res.status(500).send({ status:"error", message: `error: ${err.message}` });
   }
 });
 
 router.get("/:id", async (req, res) => {
   const orderId = req.params.id;
   try {
-    const order = await Order.findById(orderId).exec();
+    const order = await OrderSchema.findById(orderId).exec();
     res.status(200).send({ status: "ok", order: order });
   } catch (err) {
     res.status(500).send({ status:"error", message: `error: ${err.message}` });
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   const body = req.body;
   try {
-    const createdOrder = await Order.create({
+    const createdOrder = await OrderSchema.create({
       orderId: body.orderId,
       userId: body.userId
     });
@@ -43,7 +43,7 @@ router.put("/:id", async (req, res) => {
   const orderId = req.params.id;
   const body = req.body;
   try {
-    await Order.findByIdAndUpdate(orderId, {
+    await OrderSchema.findByIdAndUpdate(orderId, {
       orderId: body.orderId,
       userId: body.userId
     }).exec();
@@ -56,7 +56,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const orderId = req.params.id;
   try {
-    await Order.findByIdAndDelete(orderId).exec();
+    await OrderSchema.findByIdAndDelete(orderId).exec();
     res.sendStatus(204);
   } catch (err) {
     res.status(500).send({ status:"error", message: `error: ${err.message}` });
