@@ -20,6 +20,7 @@ window.onload = async () => {
     let meals;
     try {
       const res = await fetch(`http://localhost:3000/api/${type}`);
+      if (!res.ok) throw { message: res.statusText }; 
       const data = await res.json();
       meals = data[type];
     } catch(err) {
@@ -106,31 +107,33 @@ window.onload = async () => {
       userId: "random user"
     }
     try {
-      await fetch("http://localhost:3000/api/orders", {
+      const res = await fetch("http://localhost:3000/api/orders", {
         method: "post",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(order)
       });
+      if (!res.ok) throw { message: res.statusText };
       orders = await getResource("orders");
       renderOrders();
       } catch(err) {
-        alert("Error:", err);
+        alert(`Error: ${err.message}`);
       };
   }
 
   async function deleteOrders() {
     try {
       orders.forEach(async function(order) {
-        await fetch(`http://localhost:3000/api/orders/${order._id}`, {
+        const res = await fetch(`http://localhost:3000/api/orders/${order._id}`, {
           method: "delete",
         });
+        if (!res.ok) throw { message: res.statusText };
         orders = await getResource("orders");
         renderOrders();
       });
     } catch(err) {
-        alert("Error:", err);
+      alert(`Error: ${err.message}`);
     }
   }
 
