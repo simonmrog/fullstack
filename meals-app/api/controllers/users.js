@@ -93,7 +93,6 @@ async function loginUser(req, res) {
 }
 
 async function getUserData(req, res) {
-  console.log(req.user);
   const { email } = req.user;
   res.status(200).send({ status: "ok", email });
 }
