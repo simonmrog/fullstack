@@ -1,0 +1,89 @@
+.orders {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.navbar {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 60px;
+  line-height: 60px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0 1em;
+  font-size: 1.3em;
+}
+
+.meals-section,
+.orders-section {
+  background-color: #fff;
+  margin: 10px;
+  padding: 20px;
+  flex-grow: 1;
+  flex-basis: 40%;
+  min-height: 90%;
+}
+
+.meals-list,
+.orders-list {
+  list-style-type: none;
+}
+
+.meal {
+  cursor: pointer;
+}
+
+.meal,
+.order {
+  background-color: #7f9bab;
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.meal:hover {
+  background-color: #999;
+}
+
+.meal.selected {
+  background-color: #333;
+  color: #fff;
+}
+
+.submit {
+  background-color: #2a8279;
+  color: #fff;
+  padding: 8px 16px;
+  outline: none;
+  border-style: none;
+  cursor: pointer;
+  border-radius: 2px;
+  display: none;
+}
+
+.submit:hover {
+  background-color: #42a89e;
+}
+
+.submit:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+.logout {
+  cursor: pointer;
+  transition: font-size 0.1s;
+  font-weight: bold;
+}
+
+.logout:hover {
+  font-size: 1.1em;
+}
+
+/*# sourceMappingURL=order.css.map */

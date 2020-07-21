@@ -2,77 +2,20 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
 }
 
 body {
   background-color: #f1b856;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding-top: 50px;
-  text-align: center;
   height: 100vh;
 }
 
 #app {
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-}
-
-#app div {
-  background-color: #fff;
-  margin: 10px;
-  padding: 20px;
-  flex-grow: 1;
-  flex-basis: 40%;
-  min-height: 90%;
-}
-
-#app div ul {
-  list-style-type: none;
-}
-
-#app div ul .meal {
-  cursor: pointer;
-}
-
-#app div ul .meal,
-#app div ul .order {
-  background-color: #7f9bab;
-  margin: 20px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  user-select: none;
-}
-
-#app div ul .meal:hover {
-  background-color: #999;
-}
-
-#app div ul .meal.selected {
-  background-color: #333;
-  color: #fff;
-}
-
-#app div .submit {
-  background-color: #2a8279;
-  color: #fff;
-  padding: 8px 16px;
-  outline: none;
-  border-style: none;
-  cursor: pointer;
-  border-radius: 2px;
-  display: none;
-}
-
-#app div .submit:hover {
-  background-color: #42a89e;
-}
-
-#app div .submit:disabled {
-  background-color: #bbb;
-  cursor: not-allowed;
+  margin: 0 auto;
+  max-width: 1000px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=main.css.map */

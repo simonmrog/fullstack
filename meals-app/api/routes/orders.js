@@ -1,66 +1,17 @@
 const express = require("express");
 const router = express.Router();
 
-const OrderSchema = require("../models/order");
+const { isAuth, hasRole } = require("../middlewares/auth");
+const ordersController = require("../controllers/orders");
 
-router.get("/", async (req, res) => {
-  try {
-    const orders = await OrderSchema.find().exec();
-    res.status(200).send({ status: "ok", orders: orders });
-  } catch (err) {
-    res.status(500).send({ status:"error", message: `error: ${err.message}` });
-  }
+router.get("/onlyAdmins", isAuth, hasRole.bind(this, "admin"), function(req, res) {
+  res.status(200).send({ status: "ok", message: "Endpoint for admins only" });
 });
 
-router.get("/:id", async (req, res) => {
-  const orderId = req.params.id;
-  try {
-    const order = await OrderSchema.findById(orderId).exec();
-    res.status(200).send({ status: "ok", order: order });
-  } catch (err) {
-    res.status(500).send({ status:"error", message: `error: ${err.message}` });
-  }
-});
-
-router.post("/", async (req, res) => {
-  const body = req.body;
-  try {
-    const createdOrder = await OrderSchema.create({
-      orderId: body.orderId,
-      userId: body.userId
-    });
-    res.status(201).send({
-      status: "ok",
-      message: "Order created sucessfully",
-      order: createdOrder
-    });
-  } catch (err) {
-    res.status(500).send({ status:"error", message: `error: ${err.message}` });
-  }
-});
-
-router.put("/:id", async (req, res) => {
-  const orderId = req.params.id;
-  const body = req.body;
-  try {
-    await OrderSchema.findByIdAndUpdate(orderId, {
-      orderId: body.orderId,
-      userId: body.userId
-    }).exec();
-    res.sendStatus(204);
-  } catch (err) {
-    res.status(500).send({ status:"error", message: `error: ${err.message}` });
-  }
-});
-
-router.delete("/:id", async (req, res) => {
-  const orderId = req.params.id;
-  try {
-    await OrderSchema.findByIdAndDelete(orderId).exec();
-    res.sendStatus(204);
-  } catch (err) {
-    res.status(500).send({ status:"error", message: `error: ${err.message}` });
-  }
-});
+router.get("/", isAuth, ordersController.getOrders);
+router.get("/:id", isAuth, ordersController.getOrderById);
+router.post("/", isAuth, ordersController.createOrder);
+router.put("/:id", isAuth, ordersController.updateOrder);
+router.delete("/:id", isAuth, ordersController.deleteOrder);
 
 module.exports = router;

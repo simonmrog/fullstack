@@ -1,0 +1,50 @@
+.form-title {
+  font-size: 2em;
+  margin: 1em;
+  font-weight: 500;
+}
+
+.login {
+  margin: 50px auto;
+  padding: 1em;
+  background-color: #fff;
+  color: #333;
+  width: 300px;
+  height: 350px;
+  box-shadow: 1px 1px 2px #ccc, 1px 1px 1px #aaa;
+  border-radius: 5px;
+}
+
+.login-form {
+  margin: 0 auto;
+}
+
+.login-form input:not([type="submit"]) {
+  padding: 8px 12px;
+  margin: 0.5em 0;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background-color: #fafafa;
+}
+
+.login-button {
+  display: inline-block;
+  padding: 0.7em 1.5em;
+  outline: none;
+  border: none;
+  background-color: #ccc;
+  color: #333;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 0.7em;
+  margin: 2em auto;
+}
+
+.login-button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/*# sourceMappingURL=login.css.map */

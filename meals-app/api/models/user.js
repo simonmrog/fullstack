@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   email: String,
   password: String,
-  salt: String
+  salt: String,
+  role: { type: String, default: "user" }
 });
 
 module.exports = mongoose.model("User", UserSchema);
