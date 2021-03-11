@@ -1,0 +1,49 @@
+version: "3.2"
+
+services:
+  polling-db:
+    image: mongo
+    container_name: polling-db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+      - MONGO_INITDB_DATABASE=pollingdb
+    volumes:
+      - polling-db:/data/db
+    ports:
+      - 27020:27017
+    expose:
+      - 27017
+    networks:
+      - polling-network
+    logging:
+      driver: none
+
+  polling-app:
+    build:
+      context: .
+    container_name: polling-app
+    environment:
+      - ENVIRONMENT=dev
+      - WEB_APP_PORT=8000
+      - MONGO_USERNAME=admin
+      - MONGO_PASSWORD=admin
+      - MONGO_DATABASE_NAME=pollingdb
+      - MONGO_HOST=polling-db
+      - MONGO_PORT=27017
+    volumes:
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app/node_modules/
+    ports:
+      - 3500:8000
+    networks:
+      - polling-network
+
+volumes:
+  polling-db:
+    external: true
+  node_modules:
+
+networks:
+  polling-network:
+    external: true
