@@ -1,0 +1,16 @@
+version: "3.2"
+
+services:
+  pusher-api:
+    image: pusher-api
+    build:
+      context: .
+    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 80
+    volumes:
+      - ./:/usr/src/app/
+    ports:
+      - 8000:80
+      - 10001:10002
+    environment:
+      - PUSHER_INSTANCE_ID
+      - PUSHER_SECRET_KEY
