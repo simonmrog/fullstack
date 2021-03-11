@@ -44,11 +44,3 @@ class BeamsClient:
 
 
 beams_client = BeamsClient()
-
-
-# if __name__ == "__main__":
-#     notification = {
-#         "title": "Push notification",
-#         "body": "This is a push notification!"
-#     }
-#     beams_client.push_notification(notification)

@@ -10,7 +10,6 @@ services:
       - ./:/usr/src/app/
     ports:
       - 8000:80
-      - 10001:10002
     environment:
       - PUSHER_INSTANCE_ID
       - PUSHER_SECRET_KEY
