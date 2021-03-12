@@ -27,8 +27,11 @@ def push_notification(notification: dict):
 
     if not notification or not bool(notification):
         notification = {
-            "title": "Hello",
-            "body": "Hello, world!",
+            "notification": {
+                "title": "Hello",
+                "body": "Hello, world!"
+            },
+            "data": "My data"
         }
 
     # User id of the company which receives the email
