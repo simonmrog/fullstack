@@ -28,13 +28,10 @@ class BeamsClient:
                         "aps": {
                             "alert": notification
                         },
+                        "data": notification["data"]
                     },
-                    "fcm": {
-                        "notification": notification
-                    },
-                    "web": {
-                        "notification": notification
-                    },
+                    "fcm": notification,
+                    "web": notification
                 },
             )
             return response["publishId"]
