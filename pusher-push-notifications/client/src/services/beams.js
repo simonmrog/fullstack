@@ -11,7 +11,10 @@ class BeamClient {
       instanceId: process.env.REACT_APP_INSTANCE_ID
     });
     this.beamsTokenProvider = new PusherPushNotifications.TokenProvider({
-      url: process.env.REACT_APP_BEAMS_AUTH_URL
+      url: process.env.REACT_APP_BEAMS_AUTH_URL,
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
     });
   }
 
