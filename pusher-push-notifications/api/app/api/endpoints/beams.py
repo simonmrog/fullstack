@@ -31,7 +31,7 @@ def push_notification(notification: dict):
                 "title": "Hello",
                 "body": "Hello, world!"
             },
-            "data": "My data"
+            "data": {"data": "My data"}
         }
 
     # User id of the company which receives the email
