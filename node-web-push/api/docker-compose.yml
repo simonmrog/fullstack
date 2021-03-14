@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  node-web-push:
+    build: .
+    container_name: node-web-push
+    environment:
+      - ENVIRONMENT
+      - PORT
+      - PUBLIC_VAPID_KEY
+      - PRIVATE_VAPID_KEY
+    volumes:
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+    ports:
+      - 3100:8000
+
+volumes:
+  node_modules:
