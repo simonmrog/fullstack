@@ -9,7 +9,7 @@ services:
     volumes:
       - ./:/usr/src/app/
     ports:
-      - 8001:80
+      - 8002:80
     environment:
       - PUSHER_INSTANCE_ID
       - PUSHER_SECRET_KEY

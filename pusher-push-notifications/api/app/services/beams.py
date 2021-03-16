@@ -16,7 +16,7 @@ class BeamsClient:
             beams_token = self.beams_client.generate_token(user_id)
             return beams_token
         except Exception as e:
-            print("[ERROR]", e)
+            print("[GENTK ERROR]", e)
             return None
 
     def push_notification(self, notification, user_ids):
@@ -36,7 +36,7 @@ class BeamsClient:
             )
             return response["publishId"]
         except Exception as e:
-            print("[ERROR]", e)
+            print("[PUSHN ERROR]", e)
             return None
 
 
