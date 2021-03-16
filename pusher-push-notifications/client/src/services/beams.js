@@ -24,7 +24,7 @@ class BeamClient {
       await this.beamsClient.setUserId(this.userId, this.beamsTokenProvider);
       console.log("Successfully registered and subscribed!");
     } catch (err) {
-      console.error("[ERROR]", err.message);
+      console.error("[START ERROR]", err.message);
     }
   }
 
@@ -33,7 +33,7 @@ class BeamClient {
       await this.beamsClient.stop();
       console.log("Successfully stopped");
     } catch (err) {
-      console.error("[ERROR]", err.message);
+      console.error("[STOP ERROR]", err.message);
     }
   }
 }
