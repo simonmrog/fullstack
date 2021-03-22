@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  chat-app-api:
+    build:
+      context: .
+    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 9000:8000
+      - 11000:10000
+    environment:
+      - ENVIRONMENT
+      - DEBUG
+      - PUSHER_APP_ID
+      - PUSHER_KEY
+      - PUSHER_SECRET
