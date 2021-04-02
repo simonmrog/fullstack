@@ -8,7 +8,7 @@ function App() {
   const beamsClient = useRef();
 
   async function login() {
-    beamsClient.current = new BeamsClient("2");
+    beamsClient.current = new BeamsClient("1");
     beamsClient.current.start();
   }
 
