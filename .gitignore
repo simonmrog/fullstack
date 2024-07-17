@@ -5,3 +5,5 @@ dist
 .env
 .gitignore
 .eslintrc.js
+
+.DS_Store
